@@ -40,7 +40,7 @@ const Header = () => {
                         <>
                             {/* <span>Üdv, {session.user.name || session.user.email}!</span> */}
 
-                            <Link href="/newRecipe" className={styles.newrecipe}>Új recept</Link>
+                            <Link href="/receptek/ujrecept" className={styles.newrecipe}>Új recept</Link>
                             <Link href="/profil" className={styles.profil}>Profil</Link>
                             <Link href="/" onClick={() => signOut()}>Kijelentkezés</Link>
                         </>
