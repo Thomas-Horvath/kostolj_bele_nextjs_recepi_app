@@ -1,0 +1,19 @@
+@import './variables';
+
+.cookies_container {
+position: fixed;
+padding: 2rem;
+bottom: 0;
+left: 0;
+right: 0;
+height: 12rem;
+background: $white;
+z-index: 10;
+
+.cookies_btn {
+    width: 15rem;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 1rem;
+}
+}

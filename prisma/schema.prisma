@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  username      String?   @unique
+  email         String?   @unique
+  emailVerified DateTime?
+  password      String?
+
+  recipes  Recipe[]   @relation("UserRecipes")
+  Favorite Favorite[]
+  ratings  Rating[]
+}
+
+model Recipe {
+  id       Int    @id @default(autoincrement())
+  name     String
+  slug     String @unique
+  imageURL String
+  rate     Float? @default(4.0)
+
+  ingredients Ingredient[]
+  steps       Step[]
+
+  authorId    String
+  author      User       @relation("UserRecipes", fields: [authorId], references: [id], onDelete:Cascade)
+  favoritedBy Favorite[]
+  ratings     Rating[]
+}
+
+model Ingredient {
+  id       Int    @id @default(autoincrement())
+  name     String
+  quantity String
+  type     String
+  recipeId Int
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+}
+
+model Step {
+  id       Int    @id @default(autoincrement())
+  content  String
+  timer    Int
+  recipeId Int
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+}
+
+model Favorite {
+  userId   String
+  recipeId Int
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@id([userId, recipeId])
+}
+
+model Rating {
+  id       Int    @id @default(autoincrement())
+  userId   String
+  recipeId Int
+  score    Int // 1-5
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, recipeId])
+}
