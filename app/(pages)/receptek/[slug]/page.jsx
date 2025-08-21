@@ -1,5 +1,6 @@
 import Image from "next/image";
 import style from '../../../styles/recipeDetail.module.scss'
+import { prisma } from '../../../lib/prisma';
 
 const RecipeDetails = async ({ params }) => {
 
