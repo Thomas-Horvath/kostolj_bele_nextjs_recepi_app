@@ -46,6 +46,6 @@ export default function RootLayout({ children, session }) {
           </FavoriteProvider>
         </Providers>
       </body>
-    </html >
+    </html>
   );
 }
