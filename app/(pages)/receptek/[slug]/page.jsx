@@ -4,7 +4,7 @@ import { prisma } from '../../../../lib/prisma';
 
 const RecipeDetails = async ({ params }) => {
 
-  console.log(params)
+ 
   const recipe = await prisma.recipe.findUnique(
     {
       where: { slug: params.slug },
@@ -14,6 +14,11 @@ const RecipeDetails = async ({ params }) => {
       }
     }
   );
+
+  const user = await prisma.user.findUnique({
+    where: { id: recipe.authorId }
+  });
+
   //* nagy kezdőbetűvé alakítás
   function capitalize(s) {
     if (!s) return "";
@@ -24,7 +29,7 @@ const RecipeDetails = async ({ params }) => {
    <div className={`${style.page_container} section`}>
 
       <h2 className={style.name}>{recipe.name}</h2>
-      <Image src={`/images/${recipe.imageURL}`} width={500} height={500} className={style.img} alt={recipe.slug}/>
+      <Image src={`/images/${recipe.imageURL}`} width={300} height={300} className={style.img} alt={recipe.slug}/>
       <p className={style.rate}>Értékelés: {recipe.rate}</p>
       <h2 className={style.titles}>Hozzávalók:</h2>
       <ul>
@@ -34,6 +39,8 @@ const RecipeDetails = async ({ params }) => {
       <ul>
         {recipe.steps.map(x => <li className={style.list_items} key={x.id}>{x.content}<span> Időtartam: {x.timer}</span></li>)}
       </ul>
+
+      <h3>Szerző: {user.name}</h3>
     </div>
   );
 }

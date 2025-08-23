@@ -1,7 +1,9 @@
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../../../lib/auth";
 import { prisma } from "../../../lib/prisma";
- const { redirect } = import("next/navigation");
+import Link from "next/link";
+const { redirect } = import("next/navigation");
+import p from "../../styles/profil.module.scss";
 
 export default async function ProfilPage() {
   const session = await getServerSession(authOptions);
@@ -40,22 +42,24 @@ export default async function ProfilPage() {
 
   return (
     <div className="section">
-      <h1>Profil (védett oldal)</h1>
-      <p>Üdv, {session.user.name}!</p>
+      <div className={p.container}>
+        <h1>Szia, {session.user.name}!</h1>
 
-      <h2 className="mt-6">📜 Saját receptjeid</h2>
-      <ul>
-        {sajatReceptek.map((r) => (
-          <li key={r.id}>{r.name}</li>
-        ))}
-      </ul>
 
-      <h2 className="mt-6">❤️ Kedvenceid</h2>
-      <ul>
-        {kedvencReceptek.map((fav) => (
-          <li key={fav.id}>{fav.recipe.name}</li>
-        ))}
-      </ul>
+        <h2 className="mt-6">📜 Saját receptjeid</h2>
+        <ul>
+          {sajatReceptek.map((r) => (
+            <li key={r.id}><Link href={`/receptek/${r.slug}`}>{r.name}</Link></li>
+          ))}
+        </ul>
+
+        <h2 className="mt-6">❤️ Kedvenceid</h2>
+        <ul>
+          {kedvencReceptek.map((fav) => (
+            <li key={fav.id}><Link href={`/receptek/${fav.recipe.slug}`}>{fav.recipe.name}</Link></li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
