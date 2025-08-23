@@ -73,7 +73,7 @@
                 opacity: 1;
             }
 
-            a {
+            a , .logout_btn {
                 display: flex;
                 align-items: center;
                 width: 100%;
@@ -85,7 +85,11 @@
                 letter-spacing: .125rem;
                 border-bottom: 1px solid lighten($text, 40%);
                 background-color: $orange;
+                border: none;
+                font-family: $font-lora, Arial, Helvetica, sans-serif;
+                cursor: pointer;
             }
+          
         }
 
 
@@ -133,7 +137,7 @@
                 border: none;
 
 
-                a {
+                a , .logout_btn {
                     border: none;
                     height: 100%;
 

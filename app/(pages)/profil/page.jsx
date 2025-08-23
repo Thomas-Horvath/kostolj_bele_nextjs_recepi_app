@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../../../lib/auth";
 import { prisma } from "../../../lib/prisma";
+ const { redirect } = import("next/navigation");
 
 export default async function ProfilPage() {
   const session = await getServerSession(authOptions);
@@ -8,18 +9,15 @@ export default async function ProfilPage() {
 
   // console.log(session)
   if (!session) {
-    // redirect helyett throw redirect a next/navigation-ból
-    // de mivel ez server component, importáld:
-    const { redirect } = await import("next/navigation");
     redirect("/login");
   }
 
   // A bejelentkezett user ID-je
   const userId = session.user.id;
 
-console.log(userId, session)
 
-  // console.log(data)
+
+
   // 1. Saját receptek
   const sajatReceptek = await prisma.recipe.findMany({
     where: { authorId: userId },

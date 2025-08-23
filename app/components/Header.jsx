@@ -12,8 +12,8 @@ import { useSession, signOut } from "next-auth/react";
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
-      const { data: session } = useSession();
-
+    const { data: session } = useSession();
+   
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -40,9 +40,9 @@ const Header = () => {
                         <>
                             {/* <span>Üdv, {session.user.name || session.user.email}!</span> */}
 
-                            <Link href="/receptek/ujrecept" className={styles.newrecipe}>Új recept</Link>
-                            <Link href="/profil" className={styles.profil}>Profil</Link>
-                            <Link href="/" onClick={() => signOut()}>Kijelentkezés</Link>
+                            <Link href="/receptek/ujrecept" className={styles.newrecipe} onClick={() => setIsOpen(false)}>Új recept</Link>
+                            <Link href="/profil" className={styles.profil} onClick={() => setIsOpen(false)}>Profil</Link>
+                            <button className={styles.logout_btn} onClick={() => { signOut({ callbackUrl: "/" }); setIsOpen(false) }}>Kijelentkezés</button>
                         </>
                     ) : (
                         <>

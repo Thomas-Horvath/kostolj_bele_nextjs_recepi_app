@@ -18,11 +18,6 @@ export default async function Home() {
 
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("klikk")
-  }
-
 
 
   return (

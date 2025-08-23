@@ -1,26 +1,23 @@
 'use client';
 
 import styles from '../styles/recipeCard.module.scss';
-import { FaStar, FaRegStar, FaStarHalfAlt, FaRegHeart, FaHeart } from "react-icons/fa";
+import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useFavorites } from '../context/FavoriteContext';
+import FavoriteButton from './FavoriteButton';
+
 
 
 const RecipeCard = ({ recipe }) => {
     const imageUrl = `/images/${recipe.imageURL}`;
   
-    const { favorites, toggleFavorite } = useFavorites();
-    const isFavorite = favorites.includes(recipe.id);
-//! TODO   console.log(favorites)  // ez még kell a kedvencek mentéséhez
+   
 
     return (
         (<div className={styles.card}>
 
-            <span className={styles.heart} onClick={() => toggleFavorite(recipe.id)}>
-                {!isFavorite ? <FaRegHeart className={styles.svg} /> : <FaHeart className={`${styles.svg} ${styles.added_heart}`} />}
-            </span>
+           <FavoriteButton recipeId={recipe.id} />
 
             <div className={styles.img_container}>
                 <Image src={imageUrl} alt={recipe.name} className={styles.image} width={400} height={200} />

@@ -28,11 +28,11 @@ const RecipeDetails = async ({ params }) => {
       <p className={style.rate}>Értékelés: {recipe.rate}</p>
       <h2 className={style.titles}>Hozzávalók:</h2>
       <ul>
-        {recipe.ingredients.map(x => <li key={x._id}>{capitalize(x.name)} - Mennyiség: {x.quantity}</li>)}
+        {recipe.ingredients.map(x => <li key={x.id}>{capitalize(x.name)} - Mennyiség: {x.quantity}</li>)}
       </ul>
       <h2 className={style.titles}>Elkészítés:</h2>
       <ul>
-        {recipe.steps.map(x => <li className={style.list_items} key={x._id}>{x.content}<span> Időtartam: {x.timer}</span></li>)}
+        {recipe.steps.map(x => <li className={style.list_items} key={x.id}>{x.content}<span> Időtartam: {x.timer}</span></li>)}
       </ul>
     </div>
   );

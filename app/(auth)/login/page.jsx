@@ -4,10 +4,13 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import style from "../../styles/login.module.scss";
+
 
 export default function SignIn() {
   const [userInfo, setUserInfo] = useState({ username: "", password: "" });
   const router = useRouter();
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,13 +24,13 @@ export default function SignIn() {
     if (res.ok) {
       router.push("/profil"); // vagy valamilyen védett oldalra
     } else {
-      alert("Hibás felhasználónév vagy jelszó");
+      setError("Hibás felhasználónév vagy jelszó!");
     }
   };
 
   return (
-    <div className="section">
-      <form onSubmit={handleSubmit}>
+    <div className={style.container}>
+      <form onSubmit={handleSubmit} className={style.form}>
         <label>Felhasználónév</label>
         <input
           type="text"
@@ -40,7 +43,9 @@ export default function SignIn() {
           value={userInfo.password}
           onChange={(e) => setUserInfo({ ...userInfo, password: e.target.value })}
         />
-        <button type="submit">Bejelentkezés</button>
+
+        <p className={error ? style.error : style.hidden_error}> {error ? error : ""}</p>
+        <button type="submit" className="btn-orange">Bejelentkezés</button>
       </form>
     </div>
   );
