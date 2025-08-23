@@ -4,7 +4,7 @@ import { prisma } from '../../../../lib/prisma';
 
 const RecipeDetails = async ({ params }) => {
 
- 
+
   const recipe = await prisma.recipe.findUnique(
     {
       where: { slug: params.slug },

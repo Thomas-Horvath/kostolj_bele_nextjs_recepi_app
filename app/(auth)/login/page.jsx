@@ -31,15 +31,17 @@ export default function SignIn() {
   return (
     <div className={style.container}>
       <form onSubmit={handleSubmit} className={style.form}>
-        <label>Felhasználónév</label>
+        <h1>Bejelentkezés</h1>
         <input
           type="text"
+          placeholder="Felhasználónév"
           value={userInfo.username}
           onChange={(e) => setUserInfo({ ...userInfo, username: e.target.value })}
         />
-        <label>Jelszó</label>
+
         <input
           type="password"
+          placeholder="Jelszó"
           value={userInfo.password}
           onChange={(e) => setUserInfo({ ...userInfo, password: e.target.value })}
         />

@@ -43,21 +43,25 @@ export default async function ProfilPage() {
   return (
     <div className="section">
       <div className={p.container}>
-        <h1>Szia, {session.user.name}!</h1>
+        <h1>Szia, {session.user.username}!</h1>
 
 
         <h2 className="mt-6">📜 Saját receptjeid</h2>
         <ul>
-          {sajatReceptek.map((r) => (
-            <li key={r.id}><Link href={`/receptek/${r.slug}`}>{r.name}</Link></li>
-          ))}
+          {sajatReceptek.length === 0 ? <p>Nincsenek még saját receptjeid.</p>
+            : sajatReceptek.map((r) => (
+              <li key={r.id}><Link href={`/receptek/${r.slug}`}>{r.name}</Link></li>
+            ))}
         </ul>
 
         <h2 className="mt-6">❤️ Kedvenceid</h2>
         <ul>
-          {kedvencReceptek.map((fav) => (
-            <li key={fav.id}><Link href={`/receptek/${fav.recipe.slug}`}>{fav.recipe.name}</Link></li>
-          ))}
+
+          {
+            kedvencReceptek.length === 0 ? <p>Nincsenek kedvenc receptjeid még.</p>
+              : kedvencReceptek.map((fav) => (
+                <li key={fav.id}><Link href={`/receptek/${fav.recipe.slug}`}>{fav.recipe.name}</Link></li>
+              ))}
         </ul>
       </div>
     </div>

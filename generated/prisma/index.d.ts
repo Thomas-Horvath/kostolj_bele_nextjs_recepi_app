@@ -1585,10 +1585,10 @@ export namespace Prisma {
   export type UserGroupByOutputType = {
     id: string
     name: string | null
-    username: string | null
-    email: string | null
-    emailVerified: Date | null
-    password: string | null
+    username: string
+    email: string
+    emailVerified: Date
+    password: string
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1668,10 +1668,10 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string | null
-      username: string | null
-      email: string | null
-      emailVerified: Date | null
-      password: string | null
+      username: string
+      email: string
+      emailVerified: Date
+      password: string
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -2322,7 +2322,7 @@ export namespace Prisma {
     /**
      * The data needed to create a User.
      */
-    data?: XOR<UserCreateInput, UserUncheckedCreateInput>
+    data: XOR<UserCreateInput, UserUncheckedCreateInput>
   }
 
   /**
@@ -8315,10 +8315,10 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
-    username?: StringNullableFilter<"User"> | string | null
-    email?: StringNullableFilter<"User"> | string | null
-    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
-    password?: StringNullableFilter<"User"> | string | null
+    username?: StringFilter<"User"> | string
+    email?: StringFilter<"User"> | string
+    emailVerified?: DateTimeFilter<"User"> | Date | string
+    password?: StringFilter<"User"> | string
     recipes?: RecipeListRelationFilter
     Favorite?: FavoriteListRelationFilter
     ratings?: RatingListRelationFilter
@@ -8327,10 +8327,10 @@ export namespace Prisma {
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
-    username?: SortOrderInput | SortOrder
-    email?: SortOrderInput | SortOrder
-    emailVerified?: SortOrderInput | SortOrder
-    password?: SortOrderInput | SortOrder
+    username?: SortOrder
+    email?: SortOrder
+    emailVerified?: SortOrder
+    password?: SortOrder
     recipes?: RecipeOrderByRelationAggregateInput
     Favorite?: FavoriteOrderByRelationAggregateInput
     ratings?: RatingOrderByRelationAggregateInput
@@ -8344,8 +8344,8 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
-    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
-    password?: StringNullableFilter<"User"> | string | null
+    emailVerified?: DateTimeFilter<"User"> | Date | string
+    password?: StringFilter<"User"> | string
     recipes?: RecipeListRelationFilter
     Favorite?: FavoriteListRelationFilter
     ratings?: RatingListRelationFilter
@@ -8354,10 +8354,10 @@ export namespace Prisma {
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
-    username?: SortOrderInput | SortOrder
-    email?: SortOrderInput | SortOrder
-    emailVerified?: SortOrderInput | SortOrder
-    password?: SortOrderInput | SortOrder
+    username?: SortOrder
+    email?: SortOrder
+    emailVerified?: SortOrder
+    password?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -8369,10 +8369,10 @@ export namespace Prisma {
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
-    username?: StringNullableWithAggregatesFilter<"User"> | string | null
-    email?: StringNullableWithAggregatesFilter<"User"> | string | null
-    emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
-    password?: StringNullableWithAggregatesFilter<"User"> | string | null
+    username?: StringWithAggregatesFilter<"User"> | string
+    email?: StringWithAggregatesFilter<"User"> | string
+    emailVerified?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    password?: StringWithAggregatesFilter<"User"> | string
   }
 
   export type RecipeWhereInput = {
@@ -8663,10 +8663,10 @@ export namespace Prisma {
   export type UserCreateInput = {
     id?: string
     name?: string | null
-    username?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    password?: string | null
+    username: string
+    email: string
+    emailVerified?: Date | string
+    password: string
     recipes?: RecipeCreateNestedManyWithoutAuthorInput
     Favorite?: FavoriteCreateNestedManyWithoutUserInput
     ratings?: RatingCreateNestedManyWithoutUserInput
@@ -8675,10 +8675,10 @@ export namespace Prisma {
   export type UserUncheckedCreateInput = {
     id?: string
     name?: string | null
-    username?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    password?: string | null
+    username: string
+    email: string
+    emailVerified?: Date | string
+    password: string
     recipes?: RecipeUncheckedCreateNestedManyWithoutAuthorInput
     Favorite?: FavoriteUncheckedCreateNestedManyWithoutUserInput
     ratings?: RatingUncheckedCreateNestedManyWithoutUserInput
@@ -8687,10 +8687,10 @@ export namespace Prisma {
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: StringFieldUpdateOperationsInput | string
     recipes?: RecipeUpdateManyWithoutAuthorNestedInput
     Favorite?: FavoriteUpdateManyWithoutUserNestedInput
     ratings?: RatingUpdateManyWithoutUserNestedInput
@@ -8699,10 +8699,10 @@ export namespace Prisma {
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: StringFieldUpdateOperationsInput | string
     recipes?: RecipeUncheckedUpdateManyWithoutAuthorNestedInput
     Favorite?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
     ratings?: RatingUncheckedUpdateManyWithoutUserNestedInput
@@ -8711,28 +8711,28 @@ export namespace Prisma {
   export type UserCreateManyInput = {
     id?: string
     name?: string | null
-    username?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    password?: string | null
+    username: string
+    email: string
+    emailVerified?: Date | string
+    password: string
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: StringFieldUpdateOperationsInput | string
   }
 
   export type RecipeCreateInput = {
@@ -9015,15 +9015,15 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type RecipeListRelationFilter = {
@@ -9124,18 +9124,18 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -9442,8 +9442,8 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type RecipeUpdateManyWithoutAuthorNestedInput = {
@@ -9840,15 +9840,15 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -9907,18 +9907,18 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
@@ -10172,10 +10172,10 @@ export namespace Prisma {
   export type UserCreateWithoutRecipesInput = {
     id?: string
     name?: string | null
-    username?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    password?: string | null
+    username: string
+    email: string
+    emailVerified?: Date | string
+    password: string
     Favorite?: FavoriteCreateNestedManyWithoutUserInput
     ratings?: RatingCreateNestedManyWithoutUserInput
   }
@@ -10183,10 +10183,10 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutRecipesInput = {
     id?: string
     name?: string | null
-    username?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    password?: string | null
+    username: string
+    email: string
+    emailVerified?: Date | string
+    password: string
     Favorite?: FavoriteUncheckedCreateNestedManyWithoutUserInput
     ratings?: RatingUncheckedCreateNestedManyWithoutUserInput
   }
@@ -10302,10 +10302,10 @@ export namespace Prisma {
   export type UserUpdateWithoutRecipesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: StringFieldUpdateOperationsInput | string
     Favorite?: FavoriteUpdateManyWithoutUserNestedInput
     ratings?: RatingUpdateManyWithoutUserNestedInput
   }
@@ -10313,10 +10313,10 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutRecipesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: StringFieldUpdateOperationsInput | string
     Favorite?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
     ratings?: RatingUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -10480,10 +10480,10 @@ export namespace Prisma {
   export type UserCreateWithoutFavoriteInput = {
     id?: string
     name?: string | null
-    username?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    password?: string | null
+    username: string
+    email: string
+    emailVerified?: Date | string
+    password: string
     recipes?: RecipeCreateNestedManyWithoutAuthorInput
     ratings?: RatingCreateNestedManyWithoutUserInput
   }
@@ -10491,10 +10491,10 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutFavoriteInput = {
     id?: string
     name?: string | null
-    username?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    password?: string | null
+    username: string
+    email: string
+    emailVerified?: Date | string
+    password: string
     recipes?: RecipeUncheckedCreateNestedManyWithoutAuthorInput
     ratings?: RatingUncheckedCreateNestedManyWithoutUserInput
   }
@@ -10546,10 +10546,10 @@ export namespace Prisma {
   export type UserUpdateWithoutFavoriteInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: StringFieldUpdateOperationsInput | string
     recipes?: RecipeUpdateManyWithoutAuthorNestedInput
     ratings?: RatingUpdateManyWithoutUserNestedInput
   }
@@ -10557,10 +10557,10 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutFavoriteInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: StringFieldUpdateOperationsInput | string
     recipes?: RecipeUncheckedUpdateManyWithoutAuthorNestedInput
     ratings?: RatingUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -10602,10 +10602,10 @@ export namespace Prisma {
   export type UserCreateWithoutRatingsInput = {
     id?: string
     name?: string | null
-    username?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    password?: string | null
+    username: string
+    email: string
+    emailVerified?: Date | string
+    password: string
     recipes?: RecipeCreateNestedManyWithoutAuthorInput
     Favorite?: FavoriteCreateNestedManyWithoutUserInput
   }
@@ -10613,10 +10613,10 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutRatingsInput = {
     id?: string
     name?: string | null
-    username?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    password?: string | null
+    username: string
+    email: string
+    emailVerified?: Date | string
+    password: string
     recipes?: RecipeUncheckedCreateNestedManyWithoutAuthorInput
     Favorite?: FavoriteUncheckedCreateNestedManyWithoutUserInput
   }
@@ -10668,10 +10668,10 @@ export namespace Prisma {
   export type UserUpdateWithoutRatingsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: StringFieldUpdateOperationsInput | string
     recipes?: RecipeUpdateManyWithoutAuthorNestedInput
     Favorite?: FavoriteUpdateManyWithoutUserNestedInput
   }
@@ -10679,10 +10679,10 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutRatingsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
+    username?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: DateTimeFieldUpdateOperationsInput | Date | string
+    password?: StringFieldUpdateOperationsInput | string
     recipes?: RecipeUncheckedUpdateManyWithoutAuthorNestedInput
     Favorite?: FavoriteUncheckedUpdateManyWithoutUserNestedInput
   }

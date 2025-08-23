@@ -14,10 +14,10 @@ datasource db {
 model User {
   id            String    @id @default(cuid())
   name          String?
-  username      String?   @unique
-  email         String?   @unique
-  emailVerified DateTime?
-  password      String?
+  username      String   @unique
+  email         String   @unique
+  emailVerified DateTime @default(now())
+  password      String
 
   recipes  Recipe[]   @relation("UserRecipes")
   Favorite Favorite[]
